@@ -1,0 +1,91 @@
+/* EVA Unit Cursor Animation Styles */
+
+.eva-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.eva-cursor-unit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  transform: scale(0.8);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.eva-cursor-target {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--eva-red);
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.eva-cursor-target::before,
+.eva-cursor-target::after {
+  content: '';
+  position: absolute;
+  background-color: var(--eva-red);
+}
+
+.eva-cursor-target::before {
+  top: 50%;
+  left: -5px;
+  width: 30px;
+  height: 1px;
+  transform: translateY(-50%);
+}
+
+.eva-cursor-target::after {
+  top: -5px;
+  left: 50%;
+  width: 1px;
+  height: 30px;
+  transform: translateX(-50%);
+}
+
+/* EVA Unit SVG Styles */
+.eva-unit-silhouette {
+  fill: var(--eva-red);
+  opacity: 0.7;
+}
+
+.eva-unit-highlight {
+  fill: var(--eva-orange);
+  opacity: 0.5;
+}
+
+/* Animation for hover states */
+a:hover ~ .eva-cursor .eva-cursor-unit,
+button:hover ~ .eva-cursor .eva-cursor-unit,
+.interactive:hover ~ .eva-cursor .eva-cursor-unit {
+  transform: scale(1.2);
+  opacity: 0.8;
+}
+
+a:hover ~ .eva-cursor .eva-cursor-target,
+button:hover ~ .eva-cursor .eva-cursor-target,
+.interactive:hover ~ .eva-cursor .eva-cursor-target {
+  border-color: var(--eva-orange);
+}
+
+a:hover ~ .eva-cursor .eva-cursor-target::before,
+a:hover ~ .eva-cursor .eva-cursor-target::after,
+button:hover ~ .eva-cursor .eva-cursor-target::before,
+button:hover ~ .eva-cursor .eva-cursor-target::after,
+.interactive:hover ~ .eva-cursor .eva-cursor-target::before,
+.interactive:hover ~ .eva-cursor .eva-cursor-target::after {
+  background-color: var(--eva-orange);
+}

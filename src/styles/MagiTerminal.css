@@ -1,0 +1,259 @@
+/* MAGI Terminal Styles */
+
+.terminal-toggle {
+  background-color: var(--eva-dark);
+  border: 1px solid var(--eva-green);
+  color: var(--eva-green);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.terminal-toggle:hover {
+  background-color: var(--eva-green);
+  color: var(--eva-dark);
+}
+
+.terminal-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+.magi-terminal {
+  position: fixed;
+  bottom: -500px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background-color: rgba(10, 10, 20, 0.95);
+  border: 2px solid var(--eva-green);
+  display: flex;
+  flex-direction: column;
+  z-index: 9500;
+  transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(5px);
+}
+
+.magi-terminal.open {
+  bottom: 100px;
+}
+
+.terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 15px;
+  background-color: var(--eva-green);
+  color: var(--eva-dark);
+}
+
+.terminal-title {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+/* MAGI Status Indicators */
+.magi-status-indicators {
+  display: flex;
+  gap: 8px;
+}
+
+.magi-indicator {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: var(--eva-dark);
+  position: relative;
+}
+
+.magi-indicator.online {
+  background-color: rgba(0, 255, 0, 0.7);
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
+}
+
+.magi-indicator.warning {
+  background-color: rgba(255, 255, 0, 0.7);
+  box-shadow: 0 0 5px rgba(255, 255, 0, 0.7);
+}
+
+.magi-indicator.offline {
+  background-color: rgba(255, 0, 0, 0.7);
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+}
+
+.magi-indicator::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: currentColor;
+  opacity: 0.2;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+}
+
+.terminal-close {
+  background: none;
+  border: none;
+  color: var(--eva-dark);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.terminal-output {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--eva-white);
+}
+
+.terminal-line {
+  margin-bottom: 5px;
+  line-height: 1.5;
+}
+
+.terminal-line.system {
+  color: var(--eva-green);
+  font-weight: bold;
+}
+
+.terminal-line.input {
+  color: var(--eva-white);
+}
+
+.terminal-line.result {
+  color: var(--eva-white);
+  opacity: 0.8;
+  padding-left: 15px;
+}
+
+.terminal-line.error {
+  color: var(--eva-red);
+}
+
+.terminal-input-form {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: rgba(0, 168, 150, 0.1);
+  border-top: 1px solid var(--eva-green);
+}
+
+.terminal-prompt {
+  color: var(--eva-green);
+  font-family: var(--font-mono);
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.terminal-input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--eva-white);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+/* Scanline effect */
+.magi-terminal::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 168, 150, 0.03) 50%,
+    transparent 100%
+  );
+  background-size: 100% 3px;
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes scanline {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+/* Custom scrollbar */
+.terminal-output::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-output::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.terminal-output::-webkit-scrollbar-thumb {
+  background: var(--eva-green);
+  border-radius: 0;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .magi-terminal {
+    width: 90%;
+    height: 350px;
+  }
+  
+  .terminal-toggle {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+  }
+  
+  .terminal-toggle svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .magi-indicator {
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+  }
+}

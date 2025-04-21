@@ -1,0 +1,63 @@
+/* Neon Genesis Evangelion Sound Toggle Styles */
+
+.sound-toggle {
+  background: var(--eva-dark);
+  border: 1px solid var(--eva-red);
+  border-radius: 4px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--eva-red);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sound-toggle:hover {
+  background: var(--eva-red);
+  color: var(--eva-dark);
+}
+
+.sound-toggle-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.sound-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Pulse animation when sound is on */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 72, 0, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 72, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 72, 0, 0);
+  }
+}
+
+.sound-toggle:not(:has(.sound-toggle-label:contains("OFF"))) {
+  animation: pulse 2s infinite;
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+  .sound-toggle {
+    padding: 6px 10px;
+  }
+  
+  .sound-toggle-label {
+    font-size: 0.7rem;
+  }
+  
+  .sound-toggle svg {
+    width: 16px;
+    height: 16px;
+  }
+}

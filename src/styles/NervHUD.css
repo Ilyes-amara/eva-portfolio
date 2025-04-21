@@ -1,0 +1,190 @@
+/* NERV HUD Elements Styles */
+
+.nerv-hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 8000;
+}
+
+.hud-element {
+  position: absolute;
+  background: none;
+  border: none;
+  box-shadow: none;
+  width: auto;
+  min-height: 0;
+  height: auto;
+  padding: 0;
+  color: var(--eva-green);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  backdrop-filter: none;
+  z-index: 8001;
+}
+
+/* Corner Positioning */
+.top-left {
+  top: 70px;
+  left: 20px;
+}
+
+.top-right {
+  top: 70px;
+  right: 20px;
+  text-align: right;
+}
+
+.bottom-left {
+  bottom: 70px;
+  left: 20px;
+}
+
+.bottom-right {
+  bottom: 70px;
+  right: 20px;
+  text-align: right;
+}
+
+/* HUD Element Styles */
+.hud-time, 
+.hud-scroll-percentage, 
+.hud-status {
+  font-size: 1.2rem;
+  color: var(--eva-orange);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.hud-date, 
+.hud-scroll-position, 
+.hud-coordinates, 
+.hud-sync-rate {
+  font-size: 0.8rem;
+  margin-top: 3px;
+  opacity: 0.8;
+}
+
+.hud-label {
+  font-size: 0.6rem;
+  margin-top: 5px;
+  color: var(--eva-red);
+  letter-spacing: 1px;
+  border-top: 1px solid rgba(255, 72, 0, 0.3);
+  padding-top: 3px;
+}
+
+.hud-coordinates {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Status Indicators */
+.hud-status {
+  position: relative;
+}
+
+.hud-status::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--eva-green);
+  border-radius: 50%;
+  margin-right: 5px;
+  animation: blink 2s infinite;
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 120px;
+}
+
+.social-link {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--eva-red);
+  text-decoration: none;
+  margin-bottom: 5px;
+  text-shadow: 0 0 5px rgba(255, 72, 0, 0.5);
+  position: relative;
+  padding: 3px 0;
+  pointer-events: auto;
+  transition: all 0.3s ease;
+}
+
+.social-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--eva-red);
+  transition: width 0.3s ease;
+}
+
+.social-link:hover {
+  color: #FF7E33;
+}
+
+.social-link:hover::after {
+  width: 100%;
+  left: 0;
+  right: auto;
+}
+
+.social-link.linkedin {
+  margin-bottom: 8px;
+}
+
+/* Animations */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .hud-element {
+    width: 120px;
+    font-size: 0.7rem;
+  }
+  
+  .hud-time, 
+  .hud-scroll-percentage, 
+  .hud-status {
+    font-size: 1rem;
+  }
+  
+  .top-left, 
+  .bottom-left {
+    left: 10px;
+  }
+  
+  .top-right, 
+  .bottom-right {
+    right: 10px;
+  }
+  
+  .top-left, 
+  .top-right {
+    top: 60px;
+  }
+  
+  .bottom-left, 
+  .bottom-right {
+    bottom: 60px;
+  }
+}

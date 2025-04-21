@@ -1,0 +1,332 @@
+/* Neon Genesis Evangelion Projects Section Styles */
+
+.projects-section {
+  background-color: var(--eva-blue);
+  position: relative;
+  padding: 5rem 0;
+}
+
+.projects-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23FF4800' fill-opacity='0.1'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.05;
+  z-index: 1;
+}
+
+/* Section Header */
+.section-header {
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  color: var(--eva-white);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.nerv-id {
+  font-family: var(--font-mono);
+  color: var(--eva-red);
+  font-size: 1rem;
+  margin-right: 1rem;
+  vertical-align: middle;
+  opacity: 0.8;
+}
+
+.section-subtitle {
+  font-family: var(--font-mono);
+  color: var(--eva-green);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Category Filter */
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.category-button {
+  background: transparent;
+  border: 1px solid var(--eva-red);
+  color: var(--eva-white);
+  font-family: var(--font-mono);
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--eva-red);
+  z-index: -1;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.category-button:hover,
+.category-button.active {
+  color: var(--eva-dark);
+}
+
+.category-button:hover::before,
+.category-button.active::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Project Card */
+.project-card {
+  background: var(--eva-dark);
+  border: 1px solid var(--eva-red);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(255, 72, 0, 0.2);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+  border-bottom: 1px solid var(--eva-red);
+  background: rgba(255, 72, 0, 0.1);
+}
+
+.project-id {
+  font-family: var(--font-mono);
+  color: var(--eva-red);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.project-status {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.project-status.deployed {
+  background: var(--eva-green);
+  color: var(--eva-dark);
+}
+
+.project-status.active {
+  background: var(--eva-yellow);
+  color: var(--eva-dark);
+}
+
+.project-status.testing {
+  background: var(--eva-purple);
+  color: var(--eva-white);
+}
+
+.project-status.development {
+  background: var(--eva-orange);
+  color: var(--eva-dark);
+}
+
+/* Project Image */
+.project-image-container {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+.project-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 72, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-overlay-content {
+  text-align: center;
+}
+
+.view-project {
+  font-family: var(--font-display);
+  color: var(--eva-white);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Project Content */
+.project-content {
+  padding: 1.5rem;
+}
+
+.project-title {
+  font-family: var(--font-display);
+  color: var(--eva-white);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.project-title::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: var(--eva-red);
+}
+
+.project-description {
+  color: var(--eva-white);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Project Technologies */
+.project-tech {
+  margin-bottom: 1.5rem;
+}
+
+.tech-title {
+  font-family: var(--font-mono);
+  color: var(--eva-green);
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  background: var(--eva-blue);
+  color: var(--eva-white);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  border: 1px solid var(--eva-purple);
+}
+
+/* Project Link */
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.2rem;
+  margin-top: 0.5rem;
+}
+
+/* Project Scan Effect */
+.project-scan-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 72, 0, 0.2),
+    transparent
+  );
+  pointer-events: none;
+  animation: scan-effect 2s linear infinite;
+  z-index: 3;
+}
+
+@keyframes scan-effect {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+/* Media Queries */
+@media screen and (max-width: 992px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .category-filter {
+    justify-content: center;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
