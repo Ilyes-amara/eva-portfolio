@@ -100,7 +100,7 @@ const NervResume = () => {
                     <h3 className="section-title">PERSONAL DATA</h3>
                     <div className="detail-row">
                       <span className="detail-label">AGE:</span>
-                      <span className="detail-value">24</span>
+                      <span className="detail-value">20</span>
                     </div>
                     <div className="detail-row">
                       <span className="detail-label">NATIONALITY:</span>

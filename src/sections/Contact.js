@@ -93,11 +93,11 @@ const Contact = forwardRef((props, ref) => {
               </div>
               <div className="contact-item">
                 <div className="contact-icon">
-                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M22.54 6.42a2 2 0 0 0-1.41-1.41C19.72 4.5 12 4.5 12 4.5s-7.72 0-9.13.51A2 2 0 0 0 1.46 6.42 20.29 20.29 0 0 0 1 12a20.29 20.29 0 0 0 .46 5.58 2 2 0 0 0 1.41 1.41c1.41.51 9.13.51 9.13.51s7.72 0 9.13-.51a2 2 0 0 0 1.41-1.41A20.29 20.29 0 0 0 23 12a20.29 20.29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+                  <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 0 12.63 16 4 4 0 0 0 16 11.37Zm1.5-2.87h.01"/></svg>
                 </div>
                 <div className="contact-text">
-                  <span className="contact-label">YouTube:</span>
-                  <a className="contact-link" href="https://www.youtube.com/@ilyesamara" target="_blank" rel="noopener noreferrer">@ilyesamara</a>
+                  <span className="contact-label">Instagram:</span>
+                  <a className="contact-link" href="https://instagram.com/ilyesamara.me" target="_blank" rel="noopener noreferrer">@ilyesamara.me</a>
                 </div>
               </div>
               <div className="contact-item">

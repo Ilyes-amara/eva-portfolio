@@ -29,7 +29,7 @@ const Footer = () => {
               <ul className="footer-links-list">
                 <li><a href="mailto:ilyesamara.me@gmail.com" className="footer-social-link">ilyesamara.me@gmail.com</a></li>
                 <li><a href="https://www.linkedin.com/in/ilyes-amara-850852361" target="_blank" rel="noopener noreferrer" className="footer-social-link">LinkedIn</a></li>
-                <li><a href="https://www.youtube.com/@ilyesamara" target="_blank" rel="noopener noreferrer" className="footer-social-link">YouTube</a></li>
+                <li><a href="https://instagram.com/ilyesamara.me" target="_blank" rel="noopener noreferrer" className="footer-social-link">Instagram</a></li>
                 <li><span className="footer-social-link">Algeria</span></li>
               </ul>
             </div>

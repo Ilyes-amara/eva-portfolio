@@ -62,6 +62,8 @@ function App() {
           <div className="hexagon-grid"></div>
           <main>
             <Hero ref={(ref) => registerSectionRef('hero', ref)} />
+            {/* Automatically scroll to hero after loading */}
+            <ScrollToHero trigger={!loading} />
             <Projects ref={(ref) => registerSectionRef('projects', ref)} />
             <Skills ref={(ref) => registerSectionRef('skills', ref)} />
             <Contact ref={(ref) => registerSectionRef('contact', ref)} />
@@ -81,6 +83,18 @@ function App() {
       )}
     </div>
   );
+}
+
+function ScrollToHero({ trigger }) {
+  useEffect(() => {
+    if (trigger) {
+      const heroSection = document.querySelector('.hero-section');
+      if (heroSection) {
+        heroSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [trigger]);
+  return null;
 }
 
 export default App;
