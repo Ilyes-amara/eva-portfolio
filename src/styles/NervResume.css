@@ -17,6 +17,20 @@
   cursor: pointer;
   transition: background 0.18s, color 0.18s, border 0.18s, box-shadow 0.18s;
   outline: none;
+  /* Animation for visibility */
+  animation: nerv-glow-pulse 1.7s ease-in-out infinite;
+}
+
+@keyframes nerv-glow-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255,72,0,0.6), 0 2px 10px 0 rgba(255,72,0,0.09);
+  }
+  70% {
+    box-shadow: 0 0 16px 8px rgba(255,72,0,0.18), 0 2px 18px 0 rgba(255,72,0,0.15);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255,72,0,0.6), 0 2px 10px 0 rgba(255,72,0,0.09);
+  }
 }
 
 .resume-toggle:hover, .resume-toggle:focus {
@@ -452,6 +466,31 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.resume-footer::before {
+  content: '';
+  position: absolute;
+  left: -60px;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,72,0,0.15) 0%, rgba(255,72,0,0.4) 50%, rgba(255,72,0,0.15) 100%);
+  filter: blur(8px);
+  animation: nerv-footer-sweep 2.5s linear infinite;
+  z-index: 0;
+}
+
+@keyframes nerv-footer-sweep {
+  0% { left: -60px; }
+  100% { left: calc(100% + 60px); }
+}
+
+.classification, .footer-note {
+  position: relative;
+  z-index: 1;
 }
 
 .classification {

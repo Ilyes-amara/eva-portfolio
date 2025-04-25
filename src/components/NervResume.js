@@ -17,12 +17,39 @@ const NervResume = () => {
   };
   
   const handleDownload = () => {
-    // In a real implementation, this would download an actual resume file
-    // For now, we'll just play a sound effect
+    // Download the actual PDF resume
+    const link = document.createElement('a');
+    link.href = process.env.PUBLIC_URL + '/ilyes.pdf';
+    link.download = 'ilyes.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     soundEffects.play('success');
-    alert('NERV Personnel File download initiated. Clearance Level 4 required.');
   };
   
+  // --- SKILLS DATA (imported from Skills.js for consistency) ---
+  const skills = [
+    { id: 'skill-01', category: 'Front End', name: 'HTML/CSS', level: 95 },
+    { id: 'skill-02', category: 'Front End', name: 'JavaScript', level: 90 },
+    { id: 'skill-03', category: 'Front End', name: 'React', level: 88 },
+    { id: 'skill-04', category: 'Front End', name: 'Flutter', level: 70 },
+    { id: 'skill-05', category: 'Back End', name: 'Node.js', level: 75 },
+    { id: 'skill-06', category: 'Back End', name: 'SQL', level: 50 },
+    { id: 'skill-07', category: 'Back End', name: 'Python', level: 50 },
+    { id: 'skill-08', category: 'Other', name: 'UI/UX Design', level: 80 },
+    { id: 'skill-09', category: 'Other', name: 'Responsive Design', level: 85 },
+    { id: 'skill-10', category: 'Other', name: 'Java', level: 60 },
+    { id: 'skill-11', category: 'Other', name: 'C', level: 50 },
+    { id: 'skill-12', category: 'Other', name: 'Evangelion Piloting', level: 400 },
+  ];
+
+  // Group skills by category
+  const groupedSkills = skills.reduce((acc, skill) => {
+    if (!acc[skill.category]) acc[skill.category] = [];
+    acc[skill.category].push(skill);
+    return acc;
+  }, {});
+
   return (
     <>
       <button className="resume-toggle" onClick={toggleResume}>
@@ -146,88 +173,23 @@ const NervResume = () => {
                   <h2>TECHNICAL CAPABILITIES</h2>
                   <div className="sync-rate">SYNCHRONIZATION RATE: 89.7%</div>
                 </div>
-                
                 <div className="skills-categories">
-                  <div className="skill-category">
-                    <h3 className="category-title">FRONT-END</h3>
-                    <div className="skill-bars">
-                      <div className="skill-item">
-                        <div className="skill-name">HTML/CSS</div>
-                        <div className="skill-bar">
-                          <div className="skill-level" style={{ width: '95%' }}></div>
-                          <div className="skill-percentage">95%</div>
-                        </div>
-                      </div>
-                      <div className="skill-item">
-                        <div className="skill-name">JavaScript</div>
-                        <div className="skill-bar">
-                          <div className="skill-level" style={{ width: '90%' }}></div>
-                          <div className="skill-percentage">90%</div>
-                        </div>
-                      </div>
-                      <div className="skill-item">
-                        <div className="skill-name">React</div>
-                        <div className="skill-bar">
-                          <div className="skill-level" style={{ width: '85%' }}></div>
-                          <div className="skill-percentage">85%</div>
-                        </div>
+                  {Object.entries(groupedSkills).map(([category, categorySkills]) => (
+                    <div className="skill-category" key={category}>
+                      <h3 className="category-title">{category.toUpperCase()}</h3>
+                      <div className="skill-bars">
+                        {categorySkills.map(skill => (
+                          <div className="skill-item" key={skill.id}>
+                            <div className="skill-name">{skill.name}</div>
+                            <div className="skill-bar">
+                              <div className="skill-level" style={{ width: `${skill.level}%` }}></div>
+                              <div className="skill-percentage">{skill.level}%</div>
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     </div>
-                  </div>
-                  
-                  <div className="skill-category">
-                    <h3 className="category-title">BACK-END</h3>
-                    <div className="skill-bars">
-                      <div className="skill-item">
-                        <div className="skill-name">Node.js</div>
-                        <div className="skill-bar">
-                          <div className="skill-level" style={{ width: '80%' }}></div>
-                          <div className="skill-percentage">80%</div>
-                        </div>
-                      </div>
-                      <div className="skill-item">
-                        <div className="skill-name">Express</div>
-                        <div className="skill-bar">
-                          <div className="skill-level" style={{ width: '75%' }}></div>
-                          <div className="skill-percentage">75%</div>
-                        </div>
-                      </div>
-                      <div className="skill-item">
-                        <div className="skill-name">MongoDB</div>
-                        <div className="skill-bar">
-                          <div className="skill-level" style={{ width: '70%' }}></div>
-                          <div className="skill-percentage">70%</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="skill-category">
-                    <h3 className="category-title">OTHER SKILLS</h3>
-                    <div className="skill-bars">
-                      <div className="skill-item">
-                        <div className="skill-name">Git</div>
-                        <div className="skill-bar">
-                          <div className="skill-level" style={{ width: '85%' }}></div>
-                          <div className="skill-percentage">85%</div>
-                        </div>
-                      </div>
-                      <div className="skill-item">
-                        <div className="skill-name">UI/UX Design</div>
-                        <div className="skill-bar">
-                          <div className="skill-level" style={{ width: '80%' }}></div>
-                          <div className="skill-percentage">80%</div>
-                        </div>
-                      </div>
-                      <div className="skill-item">
-                        <div className="skill-name">Responsive Design</div>
-                        <div className="skill-bar">
-                          <div className="skill-level" style={{ width: '90%' }}></div>
-                          <div className="skill-percentage">90%</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             )}
